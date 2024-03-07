@@ -717,6 +717,7 @@ public class MockServerClient implements Stoppable {
      * Reset MockServer by clearing all expectations
      */
     public MockServerClient reset() {
+        removeMockServerEventBus();
         getMockServerEventBus().publish(EventType.RESET);
         sendRequest(
             request()

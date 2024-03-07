@@ -18,9 +18,12 @@ final class MockServerEventBus {
     }
 
     public void subscribe(SubscriberHandler subscriber, EventType... events) {
+
         for (EventType event : events) {
+            //Avoid map size caused by duplicate keys and values
+            if (!subscribers.containsEntry(event, subscriber)) {
             subscribers.put(event, subscriber);
-        }
+        }}
     }
 
     enum EventType {
